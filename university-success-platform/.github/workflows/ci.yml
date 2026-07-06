@@ -31,17 +31,17 @@ jobs:
         run: |
           black --check .
 
-      # TODO: Integrate DBT Tests for Data Transformation quality check
-      - name: Future Gate - DBT Tests
+      # TODO: Integrate DBT Tests for Data Transformation quality check (from Marouane)
+      - name: Future Gate - DBT Tests (Marouane)
         run: |
-          echo "Placeholder: Running dbt test..."
+          echo "Placeholder (Marouane): Running dbt test for data transformations..."
 
-      # TODO: Integrate Great Expectations for Data Quality validation
-      - name: Future Gate - Great Expectations Data Quality
+      # TODO: Integrate Great Expectations for Data Quality validation (from Imane)
+      - name: Future Gate - Great Expectations Data Quality (Imane)
         run: |
-          echo "Placeholder: Running great_expectations checkpoint run..."
+          echo "Placeholder (Imane): Running Great Expectations validation checkpoint..."
 
-      # TODO: Integrate pytest for FastAPI unit and integration tests
-      - name: Future Gate - Pytest for FastAPI
+      # TODO: Integrate pytest for FastAPI unit and integration tests (from Houssame)
+      - name: Future Gate - Pytest for FastAPI (Houssame)
         run: |
-          echo "Placeholder: Running pytest on api/ and ml/ tests..."
+          echo "Placeholder (Houssame): Running pytest suite for FastAPI endpoints..."

@@ -1,0 +1,33 @@
+# =========================================================================
+# Dagster System Configuration
+# =========================================================================
+
+# Run storage tracks execution history, run status, and metrics.
+run_storage:
+  module: dagster.core.storage.runs
+  class: SqliteRunStorage
+
+# Event log storage handles the logs generated during pipeline runs and asset execution.
+event_log_storage:
+  module: dagster.core.storage.event_log
+  class: SqliteEventLogStorage
+
+# Schedule storage stores metadata for schedules and sensors.
+schedule_storage:
+  module: dagster.core.storage.schedules
+  class: SqliteScheduleStorage
+
+# Scheduler initiates runs based on cron schedules or sensors.
+scheduler:
+  module: dagster.core.scheduler
+  class: DagsterDaemonScheduler
+
+# The run launcher is responsible for executing pipeline runs.
+# DefaultRunLauncher launches runs as sub-processes of the daemon container.
+run_launcher:
+  module: dagster.core.launcher
+  class: DefaultRunLauncher
+
+# Disable telemetry reports for privacy
+telemetry:
+  enabled: false

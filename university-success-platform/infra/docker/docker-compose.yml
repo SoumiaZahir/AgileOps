@@ -25,11 +25,52 @@ services:
     restart: unless-stopped
 
   # =========================================================================
-  # Dagster Webserver (Dagit)
+  # FastAPI API Service (Houssame)
   # =========================================================================
-  # The web-based interface for Dagster. Allows developers to inspect runs,
-  # launch jobs, visualize assets, and manage schedules/sensors.
-  dagster-webserver:
+  # Serves production models and exposes predictions endpoints to users.
+  # Interacts with the shared DuckDB database file.
+  api_service:
+    build:
+      context: ../../api
+      dockerfile: Dockerfile
+    container_name: api_service
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_PATH=/app/data/university.duckdb
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+    volumes:
+      - ../../data:/app/data
+      - ../../api:/app
+    restart: unless-stopped
+    depends_on:
+      - mlflow
+
+  # =========================================================================
+  # Dagster Workspace (User Code Location gRPC Service)
+  # =========================================================================
+  # Containerizes the team's custom pipelines, models, and dependencies,
+  # exposing them to the webserver and daemon over a stable gRPC interface.
+  dagster_workspace:
+    build:
+      context: ../../
+      dockerfile: infra/docker/Dockerfile
+    container_name: dagster_workspace
+    expose:
+      - "4000"
+    environment:
+      - DAGSTER_HOME=/opt/dagster/dagster_home
+    volumes:
+      - ../../data:/opt/dagster/app/data
+      - ../../pipelines:/opt/dagster/app/pipelines
+      - ../../ml:/opt/dagster/app/ml
+    restart: unless-stopped
+
+  # =========================================================================
+  # Dagster Webserver
+  # =========================================================================
+  # The web-based UI for exploring assets, launching jobs, and viewing history.
+  dagster_webserver:
     image: dagster/dagster-webserver:1.7.15
     container_name: dagster_webserver
     ports:
@@ -38,25 +79,32 @@ services:
       - DAGSTER_HOME=/opt/dagster/dagster_home
     volumes:
       - dagster_home:/opt/dagster/dagster_home
+      - ./workspace.yaml:/opt/dagster/dagster_home/workspace.yaml:ro
+      - ./dagster.yaml:/opt/dagster/dagster_home/dagster.yaml:ro
+      - ../../data:/opt/dagster/app/data
     restart: unless-stopped
     depends_on:
       - mlflow
+      - dagster_workspace
 
   # =========================================================================
   # Dagster Daemon
   # =========================================================================
-  # The background coordinator for Dagster, responsible for running schedules,
-  # monitoring sensors, and executing queued pipeline runs.
-  dagster-daemon:
+  # The background scheduler, queue manager, and run launch coordinator.
+  dagster_daemon:
     image: dagster/dagster-daemon:1.7.15
     container_name: dagster_daemon
     environment:
       - DAGSTER_HOME=/opt/dagster/dagster_home
     volumes:
       - dagster_home:/opt/dagster/dagster_home
+      - ./workspace.yaml:/opt/dagster/dagster_home/workspace.yaml:ro
+      - ./dagster.yaml:/opt/dagster/dagster_home/dagster.yaml:ro
+      - ../../data:/opt/dagster/app/data
     restart: unless-stopped
     depends_on:
-      - dagster-webserver
+      - dagster_webserver
+      - dagster_workspace
 
 volumes:
   mlflow_data:
