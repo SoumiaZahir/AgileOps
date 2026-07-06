@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  # =========================================================================
+  # MLflow Tracking Server
+  # =========================================================================
+  # Serves as the central repository for logging parameters, code versions,
+  # metrics, and output files (artifacts) generated when running ML experiments.
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.14.1
+    container_name: mlflow_tracking_server
+    ports:
+      - "5000:5000"
+    environment:
+      - MLFLOW_BACKEND_STORE_URI=sqlite:///mlflow/mlflow.db
+      - MLFLOW_ARTIFACT_ROOT=/mlflow/artifacts
+    volumes:
+      - mlflow_data:/mlflow
+    command: >
+      mlflow server
+      --backend-store-uri sqlite:///mlflow/mlflow.db
+      --default-artifact-root /mlflow/artifacts
+      --host 0.0.0.0
+      --port 5000
+    restart: unless-stopped
+
+  # =========================================================================
+  # Dagster Webserver (Dagit)
+  # =========================================================================
+  # The web-based interface for Dagster. Allows developers to inspect runs,
+  # launch jobs, visualize assets, and manage schedules/sensors.
+  dagster-webserver:
+    image: dagster/dagster-webserver:1.7.15
+    container_name: dagster_webserver
+    ports:
+      - "3000:3000"
+    environment:
+      - DAGSTER_HOME=/opt/dagster/dagster_home
+    volumes:
+      - dagster_home:/opt/dagster/dagster_home
+    restart: unless-stopped
+    depends_on:
+      - mlflow
+
+  # =========================================================================
+  # Dagster Daemon
+  # =========================================================================
+  # The background coordinator for Dagster, responsible for running schedules,
+  # monitoring sensors, and executing queued pipeline runs.
+  dagster-daemon:
+    image: dagster/dagster-daemon:1.7.15
+    container_name: dagster_daemon
+    environment:
+      - DAGSTER_HOME=/opt/dagster/dagster_home
+    volumes:
+      - dagster_home:/opt/dagster/dagster_home
+    restart: unless-stopped
+    depends_on:
+      - dagster-webserver
+
+volumes:
+  mlflow_data:
+    name: mlflow_data
+  dagster_home:
+    name: dagster_home
