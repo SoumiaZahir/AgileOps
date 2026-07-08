@@ -1,0 +1,75 @@
+version: 2
+
+models:
+  - name: stg_courses
+    description: Cleaned, one row per course (module) presentation.
+    columns:
+      - name: code_module
+        tests: [not_null]
+      - name: code_presentation
+        tests: [not_null]
+      - name: course_length_days
+        tests: [not_null]
+
+  - name: stg_assessments
+    description: Cleaned assessment definitions with '?' placeholders converted to NULL.
+    columns:
+      - name: id_assessment
+        tests: [not_null, unique]
+      - name: code_module
+        tests: [not_null]
+      - name: assessment_type
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['TMA', 'CMA', 'Exam']
+
+  - name: stg_student_info
+    description: Cleaned student demographics and final outcome, one row per student per presentation.
+    columns:
+      - name: student_presentation_id
+        description: Surrogate key = code_module-code_presentation-id_student.
+        tests: [not_null, unique]
+      - name: id_student
+        tests: [not_null]
+      - name: final_result
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['Pass', 'Fail', 'Withdrawn', 'Distinction']
+
+  - name: stg_student_registration
+    description: Cleaned registration/unregistration day offsets.
+    columns:
+      - name: student_presentation_id
+        tests: [not_null, unique]
+
+  - name: stg_student_assessment
+    description: Cleaned assessment submissions with '?' scores converted to NULL.
+    columns:
+      - name: id_assessment
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_assessments')
+                field: id_assessment
+      - name: id_student
+        tests: [not_null]
+      - name: score
+        description: 0-100, NULL if not yet marked.
+
+  - name: stg_vle
+    description: Cleaned VLE material catalog.
+    columns:
+      - name: id_site
+        tests: [not_null, unique]
+
+  - name: stg_student_vle
+    description: Cleaned clickstream fact table (~10.6M rows).
+    columns:
+      - name: id_student
+        tests: [not_null]
+      - name: sum_click
+        tests: [not_null]
