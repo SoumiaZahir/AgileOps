@@ -1,6 +1,6 @@
 # Schéma des données brutes (raw) — Dataset OULAD
 
-> Généré automatiquement à partir de la base DuckDB `data/raw/university.duckdb`
+> Généré automatiquement à partir des VRAIES données uploadées, base DuckDB `data/raw/university.duckdb`
 
 ## Table : `raw.assessments`
 
@@ -10,10 +10,10 @@
 | code_presentation | VARCHAR | YES |
 | id_assessment | BIGINT | YES |
 | assessment_type | VARCHAR | YES |
-| date | BIGINT | YES |
-| weight | BIGINT | YES |
+| date | DOUBLE | YES |
+| weight | DOUBLE | YES |
 
-**Nombre de lignes (dernier run, données de test) :** 2
+**Nombre de lignes (données réelles) :** 206
 
 ---
 
@@ -25,7 +25,7 @@
 | code_presentation | VARCHAR | YES |
 | module_presentation_length | BIGINT | YES |
 
-**Nombre de lignes (dernier run, données de test) :** 2
+**Nombre de lignes (données réelles) :** 22
 
 ---
 
@@ -37,9 +37,9 @@
 | id_student | BIGINT | YES |
 | date_submitted | BIGINT | YES |
 | is_banked | BIGINT | YES |
-| score | BIGINT | YES |
+| score | DOUBLE | YES |
 
-**Nombre de lignes (dernier run, données de test) :** 2
+**Nombre de lignes (données réelles) :** 173,912
 
 ---
 
@@ -60,7 +60,7 @@
 | disability | VARCHAR | YES |
 | final_result | VARCHAR | YES |
 
-**Nombre de lignes (dernier run, données de test) :** 2
+**Nombre de lignes (données réelles) :** 32,593
 
 ---
 
@@ -71,10 +71,10 @@
 | code_module | VARCHAR | YES |
 | code_presentation | VARCHAR | YES |
 | id_student | BIGINT | YES |
-| date_registration | BIGINT | YES |
+| date_registration | DOUBLE | YES |
 | date_unregistration | DOUBLE | YES |
 
-**Nombre de lignes (dernier run, données de test) :** 2
+**Nombre de lignes (données réelles) :** 32,593
 
 ---
 
@@ -89,7 +89,7 @@
 | date | BIGINT | YES |
 | sum_click | BIGINT | YES |
 
-**Nombre de lignes (dernier run, données de test) :** 2
+**Nombre de lignes (données réelles) :** 10,655,280
 
 ---
 
@@ -104,7 +104,7 @@
 | week_from | DOUBLE | YES |
 | week_to | DOUBLE | YES |
 
-**Nombre de lignes (dernier run, données de test) :** 2
+**Nombre de lignes (données réelles) :** 6,364
 
 ---
 
