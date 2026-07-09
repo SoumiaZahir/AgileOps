@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # =========================================================================
   # MLflow Tracking Server
@@ -71,40 +69,45 @@ services:
   # =========================================================================
   # The web-based UI for exploring assets, launching jobs, and viewing history.
   dagster_webserver:
-    image: dagster/dagster-webserver:1.7.15
-    container_name: dagster_webserver
-    ports:
-      - "3000:3000"
-    environment:
-      - DAGSTER_HOME=/opt/dagster/dagster_home
-    volumes:
-      - dagster_home:/opt/dagster/dagster_home
-      - ./workspace.yaml:/opt/dagster/dagster_home/workspace.yaml:ro
-      - ./dagster.yaml:/opt/dagster/dagster_home/dagster.yaml:ro
-      - ../../data:/opt/dagster/app/data
-    restart: unless-stopped
-    depends_on:
-      - mlflow
-      - dagster_workspace
+      build:
+        context: ../../
+        dockerfile: infra/docker/Dockerfile   # نفسها لي كتبني dagster_workspace
+      container_name: dagster_webserver
+      command: dagster-webserver -h 0.0.0.0 -p 3000 -w /opt/dagster/dagster_home/workspace.yaml
+      ports:
+        - "3000:3000"
+      environment:
+        - DAGSTER_HOME=/opt/dagster/dagster_home
+      volumes:
+        - dagster_home:/opt/dagster/dagster_home
+        - ./workspace.yaml:/opt/dagster/dagster_home/workspace.yaml:ro
+        - ./dagster.yaml:/opt/dagster/dagster_home/dagster.yaml:ro
+        - ../../data:/opt/dagster/app/data
+      restart: unless-stopped
+      depends_on:
+        - mlflow
+        - dagster_workspace
 
-  # =========================================================================
+    # =========================================================================
   # Dagster Daemon
   # =========================================================================
-  # The background scheduler, queue manager, and run launch coordinator.
   dagster_daemon:
-    image: dagster/dagster-daemon:1.7.15
-    container_name: dagster_daemon
-    environment:
-      - DAGSTER_HOME=/opt/dagster/dagster_home
-    volumes:
-      - dagster_home:/opt/dagster/dagster_home
-      - ./workspace.yaml:/opt/dagster/dagster_home/workspace.yaml:ro
-      - ./dagster.yaml:/opt/dagster/dagster_home/dagster.yaml:ro
-      - ../../data:/opt/dagster/app/data
-    restart: unless-stopped
-    depends_on:
-      - dagster_webserver
-      - dagster_workspace
+      build:
+        context: ../../
+        dockerfile: infra/docker/Dockerfile
+      container_name: dagster_daemon
+      command: dagster-daemon run -w /opt/dagster/dagster_home/workspace.yaml
+      environment:
+        - DAGSTER_HOME=/opt/dagster/dagster_home
+      volumes:
+        - dagster_home:/opt/dagster/dagster_home
+        - ./workspace.yaml:/opt/dagster/dagster_home/workspace.yaml:ro
+        - ./dagster.yaml:/opt/dagster/dagster_home/dagster.yaml:ro
+        - ../../data:/opt/dagster/app/data
+      restart: unless-stopped
+      depends_on:
+        - dagster_webserver
+        - dagster_workspace
 
 volumes:
   mlflow_data:

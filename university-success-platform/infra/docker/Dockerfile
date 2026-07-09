@@ -22,6 +22,10 @@ RUN pip install --no-cache-dir \
     duckdb \
     mlflow
 
+# Installez également les dépendances de votre projet
+COPY pipelines/orchestration/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
 # Copy the pipelines, ml, and other packages into the container
 COPY pipelines/ /opt/dagster/app/pipelines/
 COPY ml/ /opt/dagster/app/ml/
@@ -29,5 +33,8 @@ COPY ml/ /opt/dagster/app/ml/
 # Expose gRPC port 4000
 EXPOSE 4000
 
-# Start the Dagster gRPC server to serve user pipeline code to the Dagster webserver and daemon
-CMD ["dagster", "api", "grpc", "-h", "0.0.0.0", "-p", "4000", "-d", "/opt/dagster/app"]
+# CONFIGURATION FINALE : On se place dans le dossier parent 'pipelines'
+WORKDIR /opt/dagster/app/pipelines
+
+# On lance orchestration.definitions pour trouver l'objet Definitions
+CMD ["dagster", "api", "grpc", "-h", "0.0.0.0", "-p", "4000", "-m", "orchestration.definitions"]

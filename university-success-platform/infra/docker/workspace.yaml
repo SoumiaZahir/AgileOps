@@ -1,6 +1,5 @@
 load_from:
-  # Load the team's custom pipelines from the containerized workspace service
   - grpc_server:
       host: dagster_workspace
       port: 4000
-      location_name: "pipelines"
+      location_name: "orchestration"
