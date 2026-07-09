@@ -1,0 +1,8 @@
+# Workspace LOCAL (développement sans Docker) :
+#   dagster dev -w pipelines/orchestration/workspace.yaml
+# En production, le workspace.yaml de Soumia (infra/docker/) pointe vers
+# le serveur gRPC du conteneur dagster_workspace.
+load_from:
+  - python_module:
+      module_name: pipelines.orchestration.definitions
+      attribute: defs
