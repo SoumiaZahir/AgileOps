@@ -1,0 +1,28 @@
+version: 2
+
+sources:
+  - name: raw
+    description: >
+      Raw OULAD (Open University Learning Analytics Dataset) tables loaded
+      by Aymen's ingestion pipeline (pipelines/ingestion/) into DuckDB.
+      Owner: Aymen. Do not edit these tables directly — any fix belongs in
+      the staging layer below.
+    schema: raw
+    database: university
+    tables:
+      - name: courses
+        description: One row per course (module) presentation, with its length in days.
+      - name: assessments
+        description: One row per assessment (TMA/CMA/Exam) defined for a course presentation.
+      - name: student_info
+        description: One row per student per course presentation, demographics + final outcome.
+      - name: student_registration
+        description: Registration and unregistration dates per student per presentation.
+      - name: student_assessment
+        description: One row per assessment submission by a student.
+      - name: vle
+        description: Virtual Learning Environment materials/activities catalog.
+      - name: student_vle
+        description: >
+          Clickstream interactions between students and VLE materials
+          (~10.6M rows — the largest raw table).

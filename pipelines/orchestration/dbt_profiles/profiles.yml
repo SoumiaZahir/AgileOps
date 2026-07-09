@@ -1,0 +1,11 @@
+# Profil dbt utilisé PAR L'ORCHESTRATION (Maroua).
+# Le chemin de la base DuckDB est configurable via la variable d'environnement
+# DATABASE_PATH (définie par Soumia dans docker-compose), avec un défaut local.
+university_success:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "{{ env_var('DATABASE_PATH', 'data/raw/university.duckdb') }}"
+      schema: main
+      threads: 4

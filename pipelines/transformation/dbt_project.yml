@@ -1,0 +1,19 @@
+name: 'university_success_transformation'
+version: '1.0.0'
+config-version: 2
+profile: 'university_success'
+model-paths: ["models"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+
+models:
+  university_success_transformation:
+    staging:
+      +materialized: view
+      +schema: staging
+    intermediate:
+      +materialized: view
+      +schema: intermediate
+    marts:
+      +materialized: table
+      +schema: marts

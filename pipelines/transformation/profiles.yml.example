@@ -1,0 +1,10 @@
+# Copy this to ~/.dbt/profiles.yml (create the folder if it doesn't exist)
+# and adjust the `path` to wherever university.duckdb lives on your machine.
+university_success:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: '../../data/raw/university.duckdb'   # relative to this file if you keep it in the repo, otherwise use an absolute path
+      schema: main
+      threads: 4

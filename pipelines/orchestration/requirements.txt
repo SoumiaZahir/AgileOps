@@ -1,0 +1,7 @@
+# Dépendances de la couche orchestration (Maroua)
+# À ajouter dans l'image Docker du workspace (coordonné avec Soumia) :
+dagster>=1.7
+dagster-webserver>=1.7
+dbt-duckdb>=1.8
+duckdb
+pandas

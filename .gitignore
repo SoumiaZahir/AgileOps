@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+
+# VS Code
+.vscode/
+
+# Datasets
+data/sources/
+
+# Generated data
+data/raw/
+
+# DuckDB temporary files
+*.wal

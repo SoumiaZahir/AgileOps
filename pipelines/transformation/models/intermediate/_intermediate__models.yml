@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: int_student_assessment_joined
+    description: One row per assessment submission, enriched with assessment metadata (weight, type, due day, lateness flag).
+    columns:
+      - name: id_assessment
+        tests: [not_null]
+      - name: id_student
+        tests: [not_null]
+
+  - name: int_student_assessment_agg
+    description: >
+      One row per student per course presentation. Assessment performance
+      rolled up into modeling features (weighted average score, submission
+      counts, lateness, banked scores).
+    columns:
+      - name: student_presentation_id
+        tests: [not_null, unique]
+
+  - name: int_student_vle_agg
+    description: >
+      One row per student per course presentation. Clickstream engagement
+      rolled up from the raw ~10.6M row interaction log into features
+      (active days, total clicks, distinct materials touched).
+    columns:
+      - name: student_presentation_id
+        tests: [not_null, unique]
+
+  - name: int_student_registration_clean
+    description: >
+      One row per student per course presentation. Registration timing
+      with derived flags (unregistered, registered before course start).
+    columns:
+      - name: student_presentation_id
+        tests: [not_null, unique]

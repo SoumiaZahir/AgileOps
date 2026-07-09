@@ -1,0 +1,35 @@
+# =========================================================================
+# dagster.yaml — Paramètres d'instance pour l'orchestration (Maroua)
+# Copie de référence : la version montée en production est gérée par
+# Soumia dans infra/docker/. Les deux fichiers doivent rester synchronisés.
+# =========================================================================
+
+run_storage:
+  module: dagster.core.storage.runs
+  class: SqliteRunStorage
+
+event_log_storage:
+  module: dagster.core.storage.event_log
+  class: SqliteEventLogStorage
+
+schedule_storage:
+  module: dagster.core.storage.schedules
+  class: SqliteScheduleStorage
+
+# Le scheduler du daemon exécute les schedules cron + sensors
+scheduler:
+  module: dagster.core.scheduler
+  class: DagsterDaemonScheduler
+
+run_launcher:
+  module: dagster.core.launcher
+  class: DefaultRunLauncher
+
+# Limite de runs simultanés : le pipeline écrit dans un seul fichier DuckDB,
+# donc on interdit les exécutions concurrentes (évite les verrous de fichier).
+concurrency:
+  runs:
+    max_concurrent_runs: 1
+
+telemetry:
+  enabled: false

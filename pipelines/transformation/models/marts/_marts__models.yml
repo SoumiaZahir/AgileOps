@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: dim_courses
+    description: Dimension table, one row per course (module) presentation.
+    columns:
+      - name: course_presentation_id
+        tests: [not_null, unique]
+
+  - name: student_success_features
+    description: >
+      FINAL modeling table. One row per student per course presentation,
+      combining demographics, registration behavior, assessment performance
+      and VLE engagement, plus the final_result outcome and a derived
+      binary label_pass column. This is the table Abderahman trains on
+      and Brahim builds dashboards from.
+    columns:
+      - name: student_presentation_id
+        description: Surrogate key = code_module-code_presentation-id_student.
+        tests: [not_null, unique]
+      - name: id_student
+        tests: [not_null]
+      - name: final_result
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['Pass', 'Fail', 'Withdrawn', 'Distinction']
+      - name: label_pass
+        description: 1 = Pass/Distinction, 0 = Fail/Withdrawn. See model SQL header for the business-rule assumption.
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+      - name: weighted_avg_score
+        description: sum(score * assessment_weight) / sum(assessment_weight) over scored assessments. NULL if the student submitted nothing.
