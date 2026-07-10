@@ -22,6 +22,29 @@ services:
       --port 5000
     restart: unless-stopped
 
+
+    # =========================================================================
+  # FastAPI API Service (Houssame)
+  # =========================================================================
+  # Serves production models and exposes predictions endpoints to users.
+  # Interacts with the shared DuckDB database file.
+  trainnig_service:
+    build:
+      context: ../../ml
+      dockerfile: Dockerfile
+    container_name: trainnig_service
+    environment:
+      - DATABASE_PATH=/app/data/university.duckdb
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+    ports:
+      - "8888:8888"
+    volumes:
+      - ../../data:/app/data
+      - ../../ml:/app
+    restart: unless-stopped
+    depends_on:
+      - mlflow  
+
   # =========================================================================
   # FastAPI API Service (Houssame)
   # =========================================================================

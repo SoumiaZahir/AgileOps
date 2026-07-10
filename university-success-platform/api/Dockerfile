@@ -18,8 +18,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN pip install --no-cache-dir \
     fastapi \
     uvicorn \
+    scikit-learn \
+    lightgbm \
+    joblib \
+    slowapi \
+    jinja2 \
     duckdb \
-    mlflow
+    pandas \
+    pydantic
 
 # Copy the API implementation files to the app directory
 COPY . /app
