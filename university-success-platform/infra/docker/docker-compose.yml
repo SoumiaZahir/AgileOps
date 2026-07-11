@@ -67,6 +67,22 @@ services:
     depends_on:
       - mlflow
 
+  # Add this block right below api_service
+  api_test:
+    build:
+      context: ../../api
+      dockerfile: Dockerfile
+    container_name: api_test_runner
+    environment:
+      - DATABASE_PATH=/app/data/university.duckdb
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+    volumes:
+      - ../../data:/app/data
+      - ../../api:/app
+    # Installs the test dependencies inline and triggers pytest inside /app
+    command: >
+      sh -c "pip install --no-cache-dir pytest pytest-mock httpx && pytest /app/test_main.py -v"    
+
   # =========================================================================
   # Dagster Workspace (User Code Location gRPC Service)
   # =========================================================================
