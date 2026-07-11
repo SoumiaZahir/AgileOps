@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 🎓 Smart Platform for University Success
 
 ## 🚀 Overview
@@ -122,4 +121,3 @@ Then run:
 ```bash
 python pipelines/ingestion/run_all.py
 ```
->>>>>>> 62e5d7fee119ac23327aa022fabb464c0e321588
