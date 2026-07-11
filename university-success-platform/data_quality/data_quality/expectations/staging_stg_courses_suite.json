@@ -1,0 +1,61 @@
+{
+  "expectations": [
+    {
+      "id": "01d5e433-14ab-4492-a306-484385de242a",
+      "kwargs": {
+        "column": "code_module"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "593ae0ee-2f43-48e4-81ee-a7c9bdb24463",
+      "kwargs": {
+        "column": "code_presentation"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "39f7fe38-ee57-41df-8c8b-959541f1bbdb",
+      "kwargs": {
+        "column": "code_presentation",
+        "regex": "^\\d{4}[BJ]$"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_match_regex"
+    },
+    {
+      "id": "d4e8762b-500c-4deb-abb6-6864627f6c36",
+      "kwargs": {
+        "column": "course_length_days",
+        "max_value": 365.0,
+        "min_value": 1.0
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "id": "7a41950d-5cbf-48d0-bb1b-dd609c6d613d",
+      "kwargs": {
+        "column_list": [
+          "code_module",
+          "code_presentation"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_compound_columns_to_be_unique"
+    }
+  ],
+  "id": "05df861c-ff25-4ecc-89f6-77549494a617",
+  "meta": {
+    "great_expectations_version": "1.18.2"
+  },
+  "name": "staging_stg_courses_suite",
+  "notes": null
+}

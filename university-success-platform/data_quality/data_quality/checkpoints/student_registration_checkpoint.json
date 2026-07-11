@@ -1,0 +1,14 @@
+{
+  "actions": [],
+  "id": "9e3a929e-d1bb-48a2-b5c5-a59c2ab76eb3",
+  "name": "student_registration_checkpoint",
+  "result_format": {
+    "result_format": "SUMMARY"
+  },
+  "validation_definitions": [
+    {
+      "id": "15f6f1bf-b5b6-4a40-a019-b6d3f7eacc26",
+      "name": "student_registration_validation"
+    }
+  ]
+}

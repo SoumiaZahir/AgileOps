@@ -1,0 +1,64 @@
+{
+  "expectations": [
+    {
+      "id": "279a1869-505e-4782-aea8-6cb78306f16c",
+      "kwargs": {
+        "column": "id_assessment"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "d5398642-8fb5-4419-b445-a26fbec00da4",
+      "kwargs": {
+        "column": "id_assessment"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_unique"
+    },
+    {
+      "id": "fab99b92-71ca-4b17-89e6-ed774afa58f5",
+      "kwargs": {
+        "column": "assessment_type",
+        "value_set": [
+          "TMA",
+          "CMA",
+          "Exam"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_in_set"
+    },
+    {
+      "id": "8583e666-1684-4794-b31e-5c51ab0a6009",
+      "kwargs": {
+        "column": "assessment_day",
+        "max_value": 400.0,
+        "min_value": 0.0
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "id": "3ae85da8-a604-4d5f-a787-b61e4d8ea5c6",
+      "kwargs": {
+        "column": "assessment_weight",
+        "max_value": 100.0,
+        "min_value": 0.0
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    }
+  ],
+  "id": "0a32f6cf-3566-4fed-8096-17b27b232cd1",
+  "meta": {
+    "great_expectations_version": "1.18.2"
+  },
+  "name": "staging_stg_assessments_suite",
+  "notes": null
+}

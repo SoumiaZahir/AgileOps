@@ -1,0 +1,61 @@
+{
+  "expectations": [
+    {
+      "id": "9dde4481-c43b-4b08-866a-fbabc2e015a1",
+      "kwargs": {
+        "column": "code_module"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "82d4d116-a1e7-44eb-af02-f2e0f080af0b",
+      "kwargs": {
+        "column": "code_presentation"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "638d1970-8f0f-4972-9aab-8389fecb77d9",
+      "kwargs": {
+        "column": "code_presentation",
+        "regex": "^\\d{4}[BJ]$"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_match_regex"
+    },
+    {
+      "id": "d9eab195-bab8-4d60-8f05-ceb9a31e51da",
+      "kwargs": {
+        "column": "module_presentation_length",
+        "max_value": 365.0,
+        "min_value": 1.0
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "id": "fd00d8e6-ed4c-42dd-8916-bb8fed1e632d",
+      "kwargs": {
+        "column_list": [
+          "code_module",
+          "code_presentation"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_compound_columns_to_be_unique"
+    }
+  ],
+  "id": "22de4e44-3e92-4046-b9c9-8109d311fbd9",
+  "meta": {
+    "great_expectations_version": "1.18.2"
+  },
+  "name": "courses_suite",
+  "notes": null
+}

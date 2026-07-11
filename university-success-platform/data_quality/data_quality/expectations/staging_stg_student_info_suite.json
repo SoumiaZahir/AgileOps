@@ -1,0 +1,121 @@
+{
+  "expectations": [
+    {
+      "id": "27cd9ca8-8d97-4a6d-991c-ba1a1df3baf2",
+      "kwargs": {
+        "column": "id_student"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "f734d8dc-7ae7-4e4b-98fd-f3c6d755b5ac",
+      "kwargs": {
+        "column": "student_presentation_id"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "cac8b663-b22c-49bb-8996-15fb3a40754d",
+      "kwargs": {
+        "column": "student_presentation_id"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_unique"
+    },
+    {
+      "id": "d97ed800-3d5c-45d2-aa7d-528255f33f35",
+      "kwargs": {
+        "column": "gender",
+        "value_set": [
+          "M",
+          "F"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_in_set"
+    },
+    {
+      "id": "45f24e4b-e9c7-46af-b96b-1c883c9ac4b0",
+      "kwargs": {
+        "column": "disability",
+        "value_set": [
+          "Y",
+          "N"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_in_set"
+    },
+    {
+      "id": "385883ee-4542-426b-ae95-bc7da7d3d708",
+      "kwargs": {
+        "column": "final_result",
+        "value_set": [
+          "Pass",
+          "Fail",
+          "Withdrawn",
+          "Distinction"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_in_set"
+    },
+    {
+      "id": "6e9878cf-4040-4224-98e4-3a6f48d0b094",
+      "kwargs": {
+        "column": "imd_band",
+        "value_set": [
+          "0-10%",
+          "10-20%",
+          "20-30%",
+          "30-40%",
+          "40-50%",
+          "50-60%",
+          "60-70%",
+          "70-80%",
+          "80-90%",
+          "90-100%"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_in_set"
+    },
+    {
+      "id": "c9d22c56-42bb-4467-90b0-2cceb18348e6",
+      "kwargs": {
+        "column": "num_of_prev_attempts",
+        "max_value": 10.0,
+        "min_value": 0.0
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "id": "649bdfc1-2a43-4f08-867c-585add00d2bc",
+      "kwargs": {
+        "column": "studied_credits",
+        "max_value": 1000.0,
+        "min_value": 0.0
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    }
+  ],
+  "id": "0a42fa78-7982-4434-bf74-43c294a56e68",
+  "meta": {
+    "great_expectations_version": "1.18.2"
+  },
+  "name": "staging_stg_student_info_suite",
+  "notes": null
+}

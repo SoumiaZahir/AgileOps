@@ -1,0 +1,39 @@
+{
+  "expectations": [
+    {
+      "id": "de506af8-51d5-4c10-8fa3-600df0008b0f",
+      "kwargs": {
+        "column": "id_student"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "7f08fda8-dae2-4575-8bbd-4ff2a0c91277",
+      "kwargs": {
+        "column": "id_site"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "db3a4783-2ddc-4735-994d-7287497cdcf8",
+      "kwargs": {
+        "column": "sum_click",
+        "max_value": 20000.0,
+        "min_value": 1.0
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    }
+  ],
+  "id": "7c2ff6ac-0177-4a7a-8c43-8826da961af9",
+  "meta": {
+    "great_expectations_version": "1.18.2"
+  },
+  "name": "student_vle_suite",
+  "notes": null
+}

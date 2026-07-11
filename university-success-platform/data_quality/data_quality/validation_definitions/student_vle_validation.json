@@ -1,0 +1,22 @@
+{
+  "data": {
+    "asset": {
+      "id": "5c7cfd52-5e92-4bb7-81d9-a7143059beec",
+      "name": "student_vle_asset"
+    },
+    "batch_definition": {
+      "id": "500a0b2d-a2dd-4859-a4d3-1f85539d4a63",
+      "name": "student_vle_whole_table"
+    },
+    "datasource": {
+      "id": "28c880d7-ab20-4df6-9fdf-0e32d60fe416",
+      "name": "university_db"
+    }
+  },
+  "id": "a84ead70-a760-4116-9a75-929dd83ebb97",
+  "name": "student_vle_validation",
+  "suite": {
+    "id": "7c2ff6ac-0177-4a7a-8c43-8826da961af9",
+    "name": "student_vle_suite"
+  }
+}

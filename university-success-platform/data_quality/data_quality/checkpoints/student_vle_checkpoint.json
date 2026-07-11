@@ -1,0 +1,14 @@
+{
+  "actions": [],
+  "id": "c59ebee3-914e-46bc-84fe-305b4b937037",
+  "name": "student_vle_checkpoint",
+  "result_format": {
+    "result_format": "SUMMARY"
+  },
+  "validation_definitions": [
+    {
+      "id": "a84ead70-a760-4116-9a75-929dd83ebb97",
+      "name": "student_vle_validation"
+    }
+  ]
+}

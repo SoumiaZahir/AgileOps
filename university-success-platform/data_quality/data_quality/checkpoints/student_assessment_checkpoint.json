@@ -1,0 +1,14 @@
+{
+  "actions": [],
+  "id": "41e8d977-43f3-4bd7-85e2-97d61d4f37c6",
+  "name": "student_assessment_checkpoint",
+  "result_format": {
+    "result_format": "SUMMARY"
+  },
+  "validation_definitions": [
+    {
+      "id": "7c9330bd-6cac-4c15-9659-d86d40e9c42f",
+      "name": "student_assessment_validation"
+    }
+  ]
+}

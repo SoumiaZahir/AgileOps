@@ -1,0 +1,51 @@
+{
+  "expectations": [
+    {
+      "id": "2ed079b1-49fb-4972-9838-c504b89ddbe9",
+      "kwargs": {
+        "column": "id_assessment"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "a86f14b8-9ebc-4baa-a400-5aa6ec2700d6",
+      "kwargs": {
+        "column": "id_student"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "e7c14644-710a-468b-9063-4fc0d0986d16",
+      "kwargs": {
+        "column": "is_banked",
+        "value_set": [
+          0,
+          1
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_in_set"
+    },
+    {
+      "id": "60fb1358-7d3c-4d21-ad4e-fb4ac772eaf4",
+      "kwargs": {
+        "column": "score",
+        "regex": "^(\\?|\\d{1,3})$"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_match_regex"
+    }
+  ],
+  "id": "76fc1a25-f46c-4c6b-b299-91e7bb09ebd8",
+  "meta": {
+    "great_expectations_version": "1.18.2"
+  },
+  "name": "student_assessment_suite",
+  "notes": null
+}

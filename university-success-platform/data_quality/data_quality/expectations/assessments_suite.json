@@ -1,0 +1,92 @@
+{
+  "expectations": [
+    {
+      "id": "a2e71d95-2bc5-4749-b724-a7e5485df9a2",
+      "kwargs": {
+        "column": "id_assessment"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "cff1ad22-881e-4a08-9efb-0f04795981dd",
+      "kwargs": {
+        "column": "id_assessment"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_unique"
+    },
+    {
+      "id": "82b64ad5-b8f3-47a2-80e8-4147b856be0a",
+      "kwargs": {
+        "column": "code_module"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "16896aba-62c0-4829-a853-e9ea96fc7b2c",
+      "kwargs": {
+        "column": "code_presentation"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "e0765d25-b994-4ede-b546-18d4ac28dc4b",
+      "kwargs": {
+        "column": "assessment_type",
+        "value_set": [
+          "TMA",
+          "CMA",
+          "Exam"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_in_set"
+    },
+    {
+      "id": "19154651-3112-4406-907c-7574db1b92cb",
+      "kwargs": {
+        "column": "weight",
+        "max_value": 100.0,
+        "min_value": 0.0
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "id": "b339c68d-7ef6-4e96-b4b0-1cfaa3935e97",
+      "kwargs": {
+        "column": "date",
+        "regex": "^(\\?|-?\\d+)$"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_match_regex"
+    },
+    {
+      "id": "f7d59624-7ee6-4d97-87d6-0ac9e32155d9",
+      "kwargs": {
+        "column": "date",
+        "mostly": 0.98,
+        "regex": "^\\?$"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_match_regex"
+    }
+  ],
+  "id": "a522a245-7990-41f3-bd0b-74541a245524",
+  "meta": {
+    "great_expectations_version": "1.18.2"
+  },
+  "name": "assessments_suite",
+  "notes": null
+}

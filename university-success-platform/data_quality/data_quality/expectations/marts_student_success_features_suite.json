@@ -1,0 +1,325 @@
+{
+  "expectations": [
+    {
+      "id": "baab00b8-da5b-490e-8d82-d449be44a521",
+      "kwargs": {
+        "column": "student_presentation_id"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "e487b295-34cf-471c-804b-fd102ff97ca9",
+      "kwargs": {
+        "column": "student_presentation_id"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_unique"
+    },
+    {
+      "id": "e71cad78-baf6-420c-959f-ea32c7ec0d98",
+      "kwargs": {
+        "column": "id_student"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "3fe2f11b-80c7-4174-af9b-668d98768175",
+      "kwargs": {
+        "column": "code_module"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "32e5ee34-dde6-4f05-8d00-2c6d146608bd",
+      "kwargs": {
+        "column": "code_presentation"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "ad5a5eff-9d81-4ac6-a768-26d0eab3fc3c",
+      "kwargs": {
+        "column": "code_presentation",
+        "regex": "^\\d{4}[BJ]$"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_match_regex"
+    },
+    {
+      "id": "b9e942bd-c201-45cc-a3fe-0984078b2708",
+      "kwargs": {
+        "column": "label_pass"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "11ccdc5f-0f68-4eb8-8539-e8d670d5cc53",
+      "kwargs": {
+        "column": "label_pass",
+        "value_set": [
+          0,
+          1
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_in_set"
+    },
+    {
+      "id": "8048ea3b-d267-44df-99c6-38a08d3500b4",
+      "kwargs": {
+        "column": "final_result",
+        "value_set": [
+          "Pass",
+          "Fail",
+          "Withdrawn",
+          "Distinction"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_in_set"
+    },
+    {
+      "id": "b4b18b76-d032-4306-8aa4-ac3bdd1f6d3a",
+      "kwargs": {
+        "column": "gender",
+        "value_set": [
+          "M",
+          "F"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_in_set"
+    },
+    {
+      "id": "e849f89a-aba8-4513-835b-617717b8ce82",
+      "kwargs": {
+        "column": "disability",
+        "value_set": [
+          "Y",
+          "N"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_in_set"
+    },
+    {
+      "id": "31877292-89c7-4262-b20d-019a8f4096dd",
+      "kwargs": {
+        "column": "age_band",
+        "value_set": [
+          "0-35",
+          "35-55",
+          "55<="
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_in_set"
+    },
+    {
+      "id": "c1b7eb77-11a6-4b9c-bdfa-cc09ba938e85",
+      "kwargs": {
+        "column": "imd_band",
+        "value_set": [
+          "0-10%",
+          "10-20%",
+          "20-30%",
+          "30-40%",
+          "40-50%",
+          "50-60%",
+          "60-70%",
+          "70-80%",
+          "80-90%",
+          "90-100%"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_in_set"
+    },
+    {
+      "id": "e877588b-821f-44c2-8f2b-5a47dcfa7d08",
+      "kwargs": {
+        "column": "highest_education",
+        "value_set": [
+          "A Level or Equivalent",
+          "HE Qualification",
+          "Lower Than A Level",
+          "No Formal quals",
+          "Post Graduate Qualification"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_in_set"
+    },
+    {
+      "id": "c357fb56-8b77-439c-a3ec-74dc587db31f",
+      "kwargs": {
+        "column": "registered_before_course_start",
+        "value_set": [
+          0,
+          1
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_in_set"
+    },
+    {
+      "id": "07d70363-5a66-408e-8f84-b4d96bc3526b",
+      "kwargs": {
+        "column": "is_unregistered",
+        "value_set": [
+          0,
+          1
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_in_set"
+    },
+    {
+      "id": "51fe3e15-f115-4fd8-bd13-d014adadfd90",
+      "kwargs": {
+        "column": "num_of_prev_attempts",
+        "max_value": 10.0,
+        "min_value": 0.0
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "id": "be7e3c35-7bd4-4c86-aa55-508203341064",
+      "kwargs": {
+        "column": "studied_credits",
+        "max_value": 1000.0,
+        "min_value": 0.0
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "id": "1359f8a6-2257-4fa7-bc04-29a7054eb8f3",
+      "kwargs": {
+        "column": "course_length_days",
+        "max_value": 365.0,
+        "min_value": 1.0
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "id": "28d5a1f9-ddf4-452f-adfd-e8db664a9d58",
+      "kwargs": {
+        "column": "weighted_avg_score",
+        "max_value": 100.0,
+        "min_value": 0.0
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "id": "84044ecb-7835-4149-aad7-dc1364826ab5",
+      "kwargs": {
+        "column": "avg_score",
+        "max_value": 100.0,
+        "min_value": 0.0
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "id": "47484204-afa5-4de0-b4ab-86e56d0a54ec",
+      "kwargs": {
+        "column": "n_assessments_submitted",
+        "max_value": 50.0,
+        "min_value": 0.0
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "id": "7917c244-7ca0-402d-a505-698a570f2ebe",
+      "kwargs": {
+        "column": "n_late_submissions",
+        "max_value": 50.0,
+        "min_value": 0.0
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "id": "8ab6f048-1ef9-46ac-914d-7f8373e01e85",
+      "kwargs": {
+        "column": "n_active_days",
+        "max_value": 400.0,
+        "min_value": 0.0
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "id": "8f3057f0-73ba-4ff8-a49e-537bd0aab9d1",
+      "kwargs": {
+        "column": "total_clicks",
+        "max_value": 100000.0,
+        "min_value": 0.0
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "id": "8d83a92c-323b-4d77-b23c-1c108a2f47cf",
+      "kwargs": {
+        "column": "n_distinct_materials_accessed",
+        "max_value": 1000.0,
+        "min_value": 0.0
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "id": "4b4631d1-0809-45a0-a51b-37e1074de20a",
+      "kwargs": {
+        "column": "weighted_avg_score",
+        "mostly": 0.65
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    }
+  ],
+  "id": "ce8de283-76cc-46c9-89aa-4c134c2ef10a",
+  "meta": {
+    "great_expectations_version": "1.18.2"
+  },
+  "name": "marts_student_success_features_suite",
+  "notes": null
+}

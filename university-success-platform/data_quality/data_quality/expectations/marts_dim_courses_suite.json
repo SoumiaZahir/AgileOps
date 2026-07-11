@@ -1,0 +1,58 @@
+{
+  "expectations": [
+    {
+      "id": "4b542db8-f383-4ef0-867c-50e3cce3e989",
+      "kwargs": {
+        "column": "course_presentation_id"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "37eb5f70-1de2-4376-98c2-c6cab60c02f7",
+      "kwargs": {
+        "column": "course_presentation_id"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_unique"
+    },
+    {
+      "id": "21b46b47-0879-47bf-ac7b-4a830c961d9e",
+      "kwargs": {
+        "column": "code_module"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "9f4670a0-3759-4e7d-90ca-e44b65a76246",
+      "kwargs": {
+        "column": "code_presentation",
+        "regex": "^\\d{4}[BJ]$"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_match_regex"
+    },
+    {
+      "id": "9ee145ee-1f97-4a33-aebd-fa389ab3c5d2",
+      "kwargs": {
+        "column": "course_length_days",
+        "max_value": 365.0,
+        "min_value": 1.0
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    }
+  ],
+  "id": "482e675d-bd68-4aad-8644-dbe1459f7f41",
+  "meta": {
+    "great_expectations_version": "1.18.2"
+  },
+  "name": "marts_dim_courses_suite",
+  "notes": null
+}

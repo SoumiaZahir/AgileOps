@@ -1,0 +1,52 @@
+{
+  "expectations": [
+    {
+      "id": "f2cab3e4-caaa-465f-ad3b-5ef7beaf9b7e",
+      "kwargs": {
+        "column": "id_student"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "6a878071-f897-4761-8029-eea7a92821a9",
+      "kwargs": {
+        "column_list": [
+          "code_module",
+          "code_presentation",
+          "id_student"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_compound_columns_to_be_unique"
+    },
+    {
+      "id": "0dd77b4d-da3c-4848-ac49-6bc91cfaf286",
+      "kwargs": {
+        "column": "date_registration",
+        "regex": "^(\\?|-?\\d+)$"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_match_regex"
+    },
+    {
+      "id": "3f0dd7f1-83db-4d6b-bd6a-bdb2c9674c99",
+      "kwargs": {
+        "column": "date_unregistration",
+        "regex": "^(\\?|-?\\d+)$"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_match_regex"
+    }
+  ],
+  "id": "175e0956-927f-49b4-9cb4-5efe650f8804",
+  "meta": {
+    "great_expectations_version": "1.18.2"
+  },
+  "name": "student_registration_suite",
+  "notes": null
+}

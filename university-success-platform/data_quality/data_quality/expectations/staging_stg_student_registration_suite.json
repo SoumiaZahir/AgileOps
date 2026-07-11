@@ -1,0 +1,39 @@
+{
+  "expectations": [
+    {
+      "id": "6aca5ea4-1fa6-4bd2-82c7-c8eef79a0375",
+      "kwargs": {
+        "column": "id_student"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "7d1ffa55-bb20-4262-85d9-65ae49f93701",
+      "kwargs": {
+        "column": "student_presentation_id"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_unique"
+    },
+    {
+      "id": "3f4166fd-64f8-4261-937a-8ea1a29b1fc1",
+      "kwargs": {
+        "column": "date_registration",
+        "max_value": 400.0,
+        "min_value": -400.0
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    }
+  ],
+  "id": "b9b3aa0e-923c-4f68-ad9a-e85aa1ade466",
+  "meta": {
+    "great_expectations_version": "1.18.2"
+  },
+  "name": "staging_stg_student_registration_suite",
+  "notes": null
+}

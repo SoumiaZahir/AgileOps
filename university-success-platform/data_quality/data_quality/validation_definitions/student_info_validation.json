@@ -1,0 +1,22 @@
+{
+  "data": {
+    "asset": {
+      "id": "31736ff2-a9e5-463e-afe3-f1614223c21d",
+      "name": "student_info_asset"
+    },
+    "batch_definition": {
+      "id": "e1fcc73e-245e-4948-bccf-208e2126868e",
+      "name": "student_info_whole_table"
+    },
+    "datasource": {
+      "id": "28c880d7-ab20-4df6-9fdf-0e32d60fe416",
+      "name": "university_db"
+    }
+  },
+  "id": "521559c4-8ee6-4ba9-9baa-0de66e408dd5",
+  "name": "student_info_validation",
+  "suite": {
+    "id": "d6aadb55-b3b4-4f23-b820-082669f3940b",
+    "name": "student_info_suite"
+  }
+}

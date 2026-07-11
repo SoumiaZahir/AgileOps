@@ -1,0 +1,14 @@
+{
+  "actions": [],
+  "id": "451382de-366f-41b1-8aac-7da6192195cf",
+  "name": "courses_checkpoint",
+  "result_format": {
+    "result_format": "SUMMARY"
+  },
+  "validation_definitions": [
+    {
+      "id": "b016eba9-39f2-4c54-b84e-ee7aeef77a89",
+      "name": "courses_validation"
+    }
+  ]
+}
