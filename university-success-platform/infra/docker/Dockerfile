@@ -17,6 +17,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Install Dagster and data engineering dependencies
 RUN pip install --no-cache-dir \
+    --default-timeout=120 \
+    --retries=10 \
     dagster \
     dagster-webserver \
     duckdb \
