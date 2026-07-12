@@ -1,0 +1,80 @@
+name: Data Quality Gate
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  dbt-test-gate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: pipelines/transformation
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dbt dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install --default-timeout=200 --retries=15 \
+            dbt-core==1.11.12 \
+            dbt-duckdb==1.10.1
+      # TODO(Marouane): confirm data/university.duckdb vs data/raw/university.duckdb
+      - name: Generate dbt profiles.yml for CI
+        run: |
+          mkdir -p ~/.dbt
+          cat > ~/.dbt/profiles.yml << 'EOF'
+          university_success:
+            target: dev
+            outputs:
+              dev:
+                type: duckdb
+                path: '${{ github.workspace }}/data/university.duckdb'
+                schema: main
+                threads: 4
+          EOF
+      - name: Run dbt tests (blocking)
+        run: dbt test
+
+  great-expectations-gate:
+    runs-on: ubuntu-latest
+    # TODO(Imane): confirm working directory (see note in ci.yml)
+    defaults:
+      run:
+        working-directory: data_quality/data_quality
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Great Expectations dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install --default-timeout=200 --retries=15 \
+            great-expectations \
+            duckdb \
+            pandas
+      - name: Run all validation layers (blocking)
+        run: |
+          python scripts/03_run_validation.py
+          python scripts/05_run_marts_validation.py --marts-dir ../../data/marts
+          python scripts/07_run_staging_validation.py
+      - name: Fail if any quality issues are pending
+        run: |
+          if grep -q ",pending$" quality_issues_log.csv; then
+            echo "::error::Pending data quality issues found in quality_issues_log.csv"
+            exit 1
+          fi
+      - name: Upload data quality reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: data-quality-reports-pr
+          path: |
+            data_quality/data_quality/docs/data_quality_reports/
+            data_quality/data_quality/quality_issues_log.csv
